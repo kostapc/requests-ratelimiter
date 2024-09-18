@@ -33,24 +33,5 @@ public class RequestsBottleneckGate<R> {
             throw new RuntimeException(e);
         }
         return request.get();
-
-        /*var start = System.currentTimeMillis();
-        var passedTime = 0L;
-        var counter = 0;
-        while (passedTime < TOTAL_TIMEOUT_MILLS) {
-            counter++;
-            try {
-                if (bb.tryConsume(1, Duration.ofSeconds(1))) {
-                    return request.get();
-                }
-            } catch (InterruptedException e) {
-                throw new RuntimeException("interrupted on retry " + counter, e);
-            } catch (Exception e) {
-                throw new RuntimeException("failed on retry " + counter, e);
-            }
-            passedTime = System.currentTimeMillis() - start;
-        }
-        throw new RuntimeException("call unavailable");*/
     }
-
 }
